@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="app" id="login-box">
+<h2>Ingresar</h2>
+<input id="email" type="email" placeholder="Email">
+<input id="password" type="password" placeholder="Contraseña">
+<button id="login">Entrar</button>
+<p id="login-error" style="color:#f66"></p>
+</div>
+
+<div class="app" id="panel" style="display:none">
+<h2>Panel Admin</h2>
+<button id="logout" style="float:right">Salir</button>
+
+<input id="persona" placeholder="Persona">
+<input id="genetica" placeholder="Genetica">
+<input id="gramos" type="number" placeholder="Gramos">
+<button id="guardar">Guardar</button>
+
+</div>
+
+<script type="module" src="./admin.js"></script>
+</body>
+</html>
