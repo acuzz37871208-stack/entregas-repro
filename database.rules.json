@@ -1,25 +1,28 @@
 {
   "rules": {
-    "entregas": {
-      ".read": true,
-      ".write": "auth != null",
-      "$entregaId": {
-        ".validate": "newData.hasChildren(['persona', 'genetica', 'gramos', 'fecha'])"
-      }
-    },
+    ".read": false,
+    ".write": false,
     "pacientes": {
       ".read": "auth != null",
-      ".write": "auth != null"
+      ".write": "auth != null",
+      "$pin": {
+        ".read": true,
+        "pedidos": {
+          "$id": {
+            ".write": "!data.exists() && newData.exists() && root.child('pacientes').child($pin).child('nombre').exists()",
+            ".validate": "newData.hasChildren(['genetica', 'gramos', 'fecha', 'estado'])",
+            "genetica": { ".validate": "newData.isString() && newData.val().length <= 40" },
+            "gramos": { ".validate": "newData.isNumber() && newData.val() > 0 && newData.val() <= root.child('pacientes').child($pin).child('limiteMensual').val()" },
+            "fecha": { ".validate": "newData.isString() && newData.val().length <= 40" },
+            "estado": { ".validate": "newData.val() === 'pendiente' || (auth != null && (newData.val() === 'entregado' || newData.val() === 'cancelado'))" },
+            "$other": { ".validate": false }
+          }
+        }
+      }
     },
-    "pedidos": {
+    "entregas": {
       ".read": "auth != null",
       ".write": "auth != null"
-    },
-    "geneticas": {
-      ".read": "auth != null",
-      ".write": "auth != null"
-    },
-    ".read": false,
-    ".write": false
+    }
   }
 }

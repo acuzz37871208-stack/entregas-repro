@@ -17,14 +17,26 @@
 </div>
 
 <div class="app" id="panel" style="display:none">
-<h2>Panel Admin</h2>
-<button id="logout" style="float:right">Salir</button>
+<button id="logout" class="ghost" style="float:right">Salir</button>
+<h1>Panel Admin</h1>
 
-<input id="persona" placeholder="Persona">
-<input id="genetica" placeholder="Genetica">
-<input id="gramos" type="number" placeholder="Gramos">
-<button id="guardar">Guardar</button>
+<h2>Pedidos pendientes</h2>
+<div id="pedidos"></div>
 
+<h2>Registrar entrega</h2>
+<select id="re-paciente"></select>
+<select id="re-genetica"></select>
+<input id="re-gramos" type="number" inputmode="decimal" step="any" placeholder="Gramos">
+<button id="re-guardar">Guardar</button>
+
+<h2>Nuevo paciente</h2>
+<input id="np-nombre" placeholder="Nombre">
+<input id="np-pin" inputmode="numeric" maxlength="4" placeholder="Clave de 4 dígitos">
+<button id="np-crear">Crear paciente</button>
+
+<h2>Mantenimiento</h2>
+<button id="migrar" class="ghost">Migrar entregas antiguas</button>
+<p id="info"></p>
 </div>
 
 <script type="module" src="./admin.js"></script>

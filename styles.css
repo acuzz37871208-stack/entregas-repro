@@ -1,39 +1,52 @@
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 body{margin:0;background:#0b0c10;color:#eaeaea;font-family:Arial,sans-serif}
 .app{max-width:520px;margin:0 auto;padding:24px 18px 36px}
 .top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:22px}
 .eyebrow{margin:0 0 4px;color:#8b93a7;font-size:12px;text-transform:uppercase;letter-spacing:0}
 h1,h2{margin:0}
 h1{font-size:32px}
-h2{font-size:18px;margin-bottom:10px}
+h2{font-size:18px;margin:22px 0 10px}
 .usuario{padding:8px 10px;border:1px solid #2a2d3a;border-radius:8px;color:#00ffc6;background:#12141b;font-size:14px}
+button.usuario{width:auto;margin:0;font-weight:400;cursor:pointer}
+.login{padding-top:12vh}
+.login label{display:block;color:#8b93a7;margin:22px 0 6px;font-size:14px}
+#pin{font-size:28px;letter-spacing:12px;text-align:center}
+.error{color:#ff8aa0}
+.login .error{min-height:20px;font-size:14px}
 .resumen{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px;border:1px solid #282c37;border-radius:8px;background:#14161d}
 .label{color:#8b93a7;font-size:13px}
-.big{font-size:30px;font-weight:800;margin:4px 0}
-.resumen p{margin:0;color:#c8ceda}
-.estado{padding:8px 10px;border-radius:8px;font-size:12px}
-.estado.ok{background:#093d34;color:#00ffc6}
-.estado.limite{background:#493b11;color:#ffd166}
-.estado.excedido{background:#4a1724;color:#ff8aa0}
-.barra{height:12px;background:#222631;border-radius:999px;overflow:hidden;margin:14px 0 18px}
-#fill{height:100%;width:0;transition:width .25s ease}
-.metricas{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:22px}
-.metric-card{min-height:92px;padding:13px;border:1px solid #282c37;border-radius:8px;background:#12141b}
-.metric-card span{display:block;color:#8b93a7;font-size:12px;margin-bottom:8px}
-.metric-card strong{display:block;font-size:22px}
-.metric-card small{display:block;color:#c8ceda;margin-top:6px}
-.historial{margin-top:4px}
+.big{font-size:38px;font-weight:800;margin:4px 0;color:#00ffc6}
+.resumen p{margin:0;color:#c8ceda;font-size:14px}
+.pedir{margin-top:6px}
+.opciones{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:8px}
+.opcion{margin:0;text-align:left;font-weight:400;padding:13px;background:#12141b;color:#eaeaea;border:1px solid #282c37;border-radius:8px}
+.opcion strong,.opcion span{display:block}
+.opcion span{color:#8b93a7;font-size:12px;margin-top:5px}
+.opcion.activa{border-color:#00ffc6;background:#0e2a26}
+.opcion:disabled{opacity:.4;cursor:not-allowed}
+button:disabled{opacity:.5;cursor:not-allowed}
+.msg{min-height:20px;margin:8px 0 0;font-size:14px;color:#00ffc6}
+.msg.error{color:#ff8aa0}
+.historial{margin-top:10px}
 .item{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid #222631}
 .item strong,.item span{display:block}
 .item span{color:#8b93a7;font-size:13px;margin-top:3px}
 .item b{color:#00ffc6;white-space:nowrap}
+.item b.pendiente{color:#ffd166}
+.item b.cancelado{color:#8b93a7;text-decoration:line-through}
+.tag{display:inline-block;margin-left:8px;padding:2px 6px;border-radius:6px;font-size:11px;font-style:normal;font-weight:400}
+.tag.pendiente{background:#493b11;color:#ffd166}
+.tag.cancelado{background:#222631;color:#8b93a7}
 .empty{padding:18px;border:1px dashed #343947;border-radius:8px;color:#9aa2b5;text-align:center}
-input,button{width:100%;padding:10px;margin:5px 0;background:#16171d;color:white;border:1px solid #2a2d3a;border-radius:6px}
+input,select,button{width:100%;padding:10px;margin:5px 0;background:#16171d;color:white;border:1px solid #2a2d3a;border-radius:6px;font-size:16px}
 button{background:#00ffc6;color:black;border:none;font-weight:700;cursor:pointer}
+button.ghost{width:auto;background:#12141b;color:#00ffc6;border:1px solid #2a2d3a;font-weight:400}
+.fila{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid #222631;font-size:14px}
+.fila small{display:block;color:#8b93a7;margin-top:3px}
+.fila .acciones{display:flex;gap:6px}
+.fila button{width:auto;margin:0;padding:8px 10px;font-size:13px}
+.fila button.cancelar{background:#222631;color:#ff8aa0}
 @media (max-width:420px){
-  .top{display:block}
-  .usuario{display:inline-block;margin-top:10px}
-  .resumen{display:block}
-  .estado{display:inline-block;margin-top:12px}
-  .metricas{grid-template-columns:1fr}
+  .opciones{grid-template-columns:1fr}
 }

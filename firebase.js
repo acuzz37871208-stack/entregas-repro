@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+import { getDatabase, ref, push, get, set, update, onValue } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -22,6 +22,6 @@ const db = getDatabase(app);
 const auth = getAuth(app);
 
 export {
-  db, ref, push, onValue,
+  db, ref, push, get, set, update, onValue,
   auth, signInWithEmailAndPassword, onAuthStateChanged, signOut
 };

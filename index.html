@@ -9,23 +9,46 @@
 <body>
 
 <main class="app">
+
+<section id="login" class="login">
+<p class="eyebrow">Seguimiento mensual</p>
+<h1>Consumo</h1>
+<label for="pin">Ingresá tu clave de 4 dígitos</label>
+<input id="pin" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="4" autocomplete="off" placeholder="••••">
+<p id="login-error" class="error" role="alert"></p>
+</section>
+
+<section id="app" hidden>
 <header class="top">
 <div>
 <p class="eyebrow">Seguimiento mensual</p>
 <h1>Consumo</h1>
 </div>
-<div id="usuario" class="usuario"></div>
+<button id="salir" class="usuario" type="button"></button>
 </header>
 
-<section id="resumen" class="resumen"></section>
-<div class="barra"><div id="fill"></div></div>
+<section class="resumen">
+<div>
+<span class="label">Disponible este mes</span>
+<div class="big" id="disponible"></div>
+<p id="detalle"></p>
+</div>
+</section>
 
-<section id="metricas" class="metricas" aria-label="Metricas del mes"></section>
+<section class="pedir">
+<h2>Pedir genéticas</h2>
+<div id="opciones" class="opciones"></div>
+<input id="gramos" type="number" inputmode="decimal" min="0" step="any" placeholder="Gramos">
+<button id="pedir" type="button" disabled>Pedir</button>
+<p id="msg" class="msg" role="status"></p>
+</section>
 
 <section class="historial">
-<h2>Entregas</h2>
+<h2>Historial</h2>
 <div id="lista"></div>
 </section>
+</section>
+
 </main>
 
 <script type="module" src="./app.js"></script>
