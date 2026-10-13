@@ -9,10 +9,10 @@
         ".read": true,
         "pedidos": {
           "$id": {
-            ".write": "!data.exists() && newData.exists() && root.child('pacientes').child($pin).child('nombre').exists()",
+            ".write": "!data.exists() && newData.exists() && root.child('pacientes').child($pin).exists()",
             ".validate": "newData.hasChildren(['genetica', 'gramos', 'fecha', 'estado'])",
             "genetica": { ".validate": "newData.isString() && newData.val().length <= 40" },
-            "gramos": { ".validate": "newData.isNumber() && newData.val() > 0 && newData.val() <= root.child('pacientes').child($pin).child('limiteMensual').val()" },
+            "gramos": { ".validate": "newData.isNumber() && newData.val() > 0 && newData.val() <= (root.child('pacientes').child($pin).child('limiteMensual').exists() ? root.child('pacientes').child($pin).child('limiteMensual').val() : root.child('pacientes').child($pin).child('cupo').val())" },
             "fecha": { ".validate": "newData.isString() && newData.val().length <= 40" },
             "estado": { ".validate": "newData.val() === 'pendiente' || (auth != null && (newData.val() === 'entregado' || newData.val() === 'cancelado'))" },
             "$other": { ".validate": false }

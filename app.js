@@ -82,6 +82,11 @@ function entrar(pin) {
         if (!estabaAdentro) falloLogin();
         return;
       }
+      if (snap.val().activo === false) {
+        cerrarSesion();
+        el.error.textContent = "Paciente inactivo. Consultá con el local.";
+        return;
+      }
       datos = snap.val();
       clave = pin;
       if (!conectado) {
@@ -89,7 +94,7 @@ function entrar(pin) {
         fallos = 0;
         el.error.textContent = "";
         sessionStorage.setItem("pin", pin);
-        el.salir.textContent = `${datos.nombre} · Salir`;
+        el.salir.textContent = `${datos.nombre || "Paciente"} · Salir`;
         mostrar(true);
       }
       render();
@@ -113,7 +118,7 @@ function render() {
 
   // Cuentan contra el cupo: entregas + pedidos pendientes del mes en curso
   const consumos = [...entregas, ...pedidos.filter((p) => p.estado === "pendiente")].filter((c) => delMes(c.fecha));
-  const limite = num(datos.limiteMensual) || CONFIG.LIMITE_MENSUAL;
+  const limite = num(datos.limiteMensual) || num(datos.cupo) || CONFIG.LIMITE_MENSUAL;
   const disponible = Math.max(0, limite - suma(consumos));
   const pendiente = suma(consumos.filter((c) => c.estado === "pendiente"));
 

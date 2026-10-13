@@ -23,8 +23,10 @@ onAuthStateChanged(auth, (user) => {
   if (user) {
     unsub = onValue(ref(db, "pacientes"), (snap) => {
       pacientes = Object.fromEntries(
-  Object.entries(snap.val() || {}).filter(([k, p]) => /^\d{4}$/.test(k) && p && p.nombre)
-);
+        Object.entries(snap.val() || {})
+          .filter(([k, p]) => /^\d{4}$/.test(k) && p && typeof p === "object")
+          .map(([k, p]) => [k, { ...p, nombre: p.nombre || `Paciente ${k}` }])
+      );
       render();
     });
   }
