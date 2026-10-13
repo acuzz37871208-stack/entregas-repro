@@ -22,7 +22,9 @@ onAuthStateChanged(auth, (user) => {
   unsub = null;
   if (user) {
     unsub = onValue(ref(db, "pacientes"), (snap) => {
-      pacientes = snap.val() || {};
+      pacientes = Object.fromEntries(
+  Object.entries(snap.val() || {}).filter(([k, p]) => /^\d{4}$/.test(k) && p && p.nombre)
+);
       render();
     });
   }
